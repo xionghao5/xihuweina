@@ -1,0 +1,69 @@
+/* ==========================================
+   芯卫纳 - 科技风芯片检测公司网站样式
+   Part 2: 补充动画及过渡样式
+   ========================================== */
+
+/* ---- 粒子背景点光晕扩散 ---- */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 30%; left: 60%;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(123,47,255,0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  animation: glow-pulse 6s ease-in-out infinite alternate;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 20%;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(0,212,255,0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  animation: glow-pulse 8s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes glow-pulse {
+  from { transform: scale(1); opacity: 0.6; }
+  to   { transform: scale(1.2); opacity: 1; }
+}
+
+/* ---- 设备卡片悬停发光边框 ---- */
+.device-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  padding: 1px;
+  background: linear-gradient(135deg, transparent, rgba(0,212,255,0), transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  transition: var(--transition);
+  pointer-events: none;
+}
+.device-card:hover::before {
+  background: linear-gradient(135deg, var(--primary), var(--secondary), var(--primary));
+  animation: border-rotate 3s linear infinite;
+}
+
+@keyframes border-rotate {
+  from { background-position: 0% 0%; }
+  to   { background-position: 200% 0%; }
+}
+
+/* ---- 隐藏过滤效果 ---- */
+.device-card.hidden {
+  opacity: 0;
+  transform: scale(0.9);
+  pointer-events: none;
+  height: 0;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
