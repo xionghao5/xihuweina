@@ -621,9 +621,34 @@
   </div>
   <div class="footer-bottom">
     <span>© 2026 芯卫纳科技有限公司 版权所有</span>
-    <span><a href="https://beian.miit.gov.cn/" target="_blank">浙ICP备2026047292号-1</a></span>
+    <span class="box">
+      <a href="https://beian.miit.gov.cn/" target="_blank">浙ICP备2026047292号-1</a>
+      <img src="beiantubiao.png" alt="">
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=33010502013203" rel="noreferrer" target="_blank">浙公网安备33010502013203号</a>
+    </span>
   </div>
 </footer>
+
+<style>
+  /* 外层span设弹性盒 */
+  .box {
+    display: inline-flex; /* inline-flex不独占一行，flex会换行占整行 */
+    align-items: center;  /* 垂直居中，实现等高 */
+    gap: 6px;             /* 图片和文字间距 */
+  }
+  /* 限制图片高度，统一尺寸 */
+  .box img {
+    height: 24px;
+    width: auto; /* 宽度自适应不变形 */
+  }
+  .box a {
+    line-height: 24px; /* 和图片高度统一 */
+    text-decoration: none;
+    color: #333;
+  }
+</style>
+
+
 
 <!-- 设备详情弹窗 -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
